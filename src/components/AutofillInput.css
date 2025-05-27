@@ -1,0 +1,63 @@
+/* src/components/AutofillInput.css */
+.autofill-container {
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  font-family: sans-serif;
+}
+
+.autofill-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* src/components/AutofillInput.css */
+
+/* src/components/AutofillInput.css */
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  /* ---- KEY PROPERTY FOR TEXT VISIBILITY ---- */
+  color: #333; /* A dark gray text color. Change this if your dropdown BG is dark. */
+  /* For example, if your .suggestions-list background is dark gray (#333): */
+  /* color: white; */
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #e9e9e9; /* Light gray hover */
+  /* If your dropdown items are dark, make hover slightly lighter/different dark shade */
+  /* color: #222; /* Ensure text color on hover is still visible */
+}
+
+.suggestion-item strong {
+  font-weight: bold;
+  /* Ensure this doesn't override the item's text color in a bad way */
+  /* color: inherit; /* Usually good, or specify if needed */
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestion-item strong {
+  font-weight: bold;
+}
