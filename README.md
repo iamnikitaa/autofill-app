@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# Autofill Input Component - React & TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project implements an Autofill Input component using React (with Vite) and TypeScript.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Filters a predefined list of items based on user input.
+-   Displays filtered items as a dropdown list.
+-   Implements debouncing (300ms) to optimize filtering performance.
+-   Highlights the matched substring in bold within the suggestions.
+-   Utilizes an LRU (Least Recently Used) Cache (stores up to 10 items) for optimized performance on repeated queries.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   React
+-   Vite
+-   TypeScript
+-   CSS (for basic styling)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Setup and Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  Clone the repository:
+    ```bash
+    git clone <YOUR_GITHUB_REPO_URL.git>
+    cd autofill-app
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+    The application will be available at `http://localhost:5173` (or another port if 5173 is busy).
+
+## How it Works
+
+-   **Data:** A predefined list of items is stored in `src/data.ts`.
+-   **LRU Cache:** A custom LRU cache (`src/utils/lruCache.ts`) is used to store results of previous searches. It has a capacity of 10 items.
+-   **Debouncing:** A custom debounce function (`src/utils/debounce.ts`) delays the filtering logic by 300ms after the user stops typing.
+-   **Filtering & Highlighting:** The `AutofillInput` component (`src/components/AutofillInput.tsx`) handles user input, performs filtering, interacts with the cache, and renders suggestions with the matched text highlighted.
+-   **Styling:** Basic CSS is provided in `src/components/AutofillInput.css`.
+
+## To Test
+
+-   Type in the input field (e.g., "react", "next js", "typescript").
+-   Observe the suggestions dropdown.
+-   Check the browser's developer console for "Cache hit" or "Cache miss" messages to see the LRU cache in action.
